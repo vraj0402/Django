@@ -1,3 +1,4 @@
+from django.http import response
 from django.shortcuts import render,HttpResponse
 
 # Create your views here.
@@ -22,4 +23,14 @@ def contact(request):
     return render(request,'contact.html')
     #return HttpResponse("this is contact page")
 def result(request):
-    return render(request,'result.html')
+    context={
+    'fname':request.POST['f_name'],
+    'lname':request.POST['l_name'],
+    'c_name':request.POST['c_name'],
+    'add':request.POST['add'],
+    'email':request.POST['email'],
+    'phone':request.POST['phone'],
+    'a_info':request.POST['a_info']
+    }
+
+    return render(request,'result.html',context)
